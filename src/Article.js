@@ -7,7 +7,7 @@ export default class Article extends Component {
        super(props)
 
         this.state = {
-           isOpen: true
+           isOpen: false
         }
 
         this.toggleClick = this.toggleClick.bind(this)
