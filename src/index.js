@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import Article from './Article';
 import registerServiceWorker from './registerServiceWorker';
+import {articles} from './fixtures'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//console.log('normalizedArticles', normalizedArticles);
+
+
+
+ReactDOM.render(<Article article={articles[0]} foo="bar"/>, document.getElementById('root'));
 registerServiceWorker();
