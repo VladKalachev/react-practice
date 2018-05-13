@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen'
+import PropTypes from 'prop-types'
 
 class CommentList extends Component {
+
+    static propTypes = {
+        isOpen: PropTypes.bool,
+        toggleOpen: PropTypes.func
+    }
 
     constructor(props){
         super(props)
@@ -13,11 +19,15 @@ class CommentList extends Component {
         const { isOpen, toggleOpen } = this.props
 
         return (
-            <div>
+            <div ref={this.refDiv}>
                 {comments ? <button onClick={toggleOpen}>{!isOpen ? 'close comment' : 'open comment'}</button> : null }
                 <ul>{this.getComment()}</ul>
             </div>
         )
+    }
+
+    refDiv = ref => {
+       // console.log(ref)
     }
 
     getComment(){

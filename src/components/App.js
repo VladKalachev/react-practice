@@ -1,10 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ArticleList from './ArticleList'
+import UserForm from './UserForm'
+
 
 class App extends Component {
-    render(){
-        return <ArticleList {...this.props}/>
+
+
+    state = {
+        username: ''
     }
+
+    render(){
+        return <div>
+            <UserForm />
+            <ArticleList {...this.props}/>
+        </div>
+    }
+
+
 }
 
 

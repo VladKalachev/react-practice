@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import CommentList from './CommentList'
 import toggleOpen from '../decorators/toggleOpen'
 
-class Article extends Component {
+class Article extends PureComponent {
 
     constructor(props){
         super(props)
