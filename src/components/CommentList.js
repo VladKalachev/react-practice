@@ -1,34 +1,28 @@
 import React, { Component } from 'react'
 import Comment from './Comment'
+import toggleOpen from '../decorators/toggleOpen'
 
 class CommentList extends Component {
 
     constructor(props){
         super(props)
-        this.state = {
-            isOpen: false
-        }
-
-        this.toggleClick = this.toggleClick.bind(this)
     }
 
     render(){
         const { comments } =this.props
-        const { isOpen } = this.state
+        const { isOpen, toggleOpen } = this.props
 
         return (
             <div>
-                {comments ? <button onClick={this.toggleClick}>{isOpen ? 'close comment' : 'open comment'}</button> : null }
+                {comments ? <button onClick={toggleOpen}>{!isOpen ? 'close comment' : 'open comment'}</button> : null }
                 <ul>{this.getComment()}</ul>
             </div>
         )
     }
 
     getComment(){
-        const { comments } =this.props
-        const { isOpen } = this.state
-        console.log(comments)
-        if(comments && isOpen){
+        const { comments, isOpen } =this.props
+        if(comments && !isOpen){
             return (
                 comments.map(com => <li key={com.id}><Comment {...com}/></li>)
             )
@@ -37,13 +31,6 @@ class CommentList extends Component {
         }
     }
 
-    toggleClick(){
-
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
-
 }
 
-export default CommentList
+export default toggleOpen(CommentList)
