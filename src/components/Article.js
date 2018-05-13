@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import style from './Article.css'
+import CommentList from './CommentList'
 
 export default class Article extends Component {
 
@@ -7,18 +8,17 @@ export default class Article extends Component {
        super(props)
 
         this.state = {
-           isOpen: false
+           isOpen: true
         }
 
         this.toggleClick = this.toggleClick.bind(this)
     }
 
     render(){
-        console.log(this.props)
         const { title, text } = this.props.article
         const { isOpen } = this.state
-
         const toggle = isOpen ? 'hidden' : ''
+
         return (
             <div >
                 <h3>{title}</h3>
@@ -34,7 +34,10 @@ export default class Article extends Component {
         const { isOpen } = this.state
         const { text } = this.props.article
         if(isOpen) return null
-        return  <section>{text}</section>
+        return  <div>
+            <section>{text}</section>
+            <CommentList {...this.props.article}/>
+        </div>
     }
 
     toggleClick () {
